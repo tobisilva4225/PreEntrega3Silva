@@ -54,5 +54,21 @@ for (let i = 0; i < reservas.length; i++) {
     `Reserva a nombre de ${reserva.nombre} a las ${reserva.hora} para ${reserva.personas} personas`
   );
 }
+/* 
+reserva(); */
 
-reserva();
+function Reserva(nombre, hora, personas) {
+  this.nombre = nombre;
+  this.hora = hora;
+  this.personas = personas;
+  this.mensaje = function () {
+    console.log("Hola " + nombre + " te esperamos a las " + hora);
+  };
+}
+
+const reserva1 = new Reserva("juan", "20hs", 5);
+const reserva2 = new Reserva("maria", "20hs", 3);
+const reserva3 = new Reserva("fernando", "22hs", 2);
+const reserva4 = new Reserva("agustin", "20hs", 6);
+
+console.log(reserva1.mensaje());
