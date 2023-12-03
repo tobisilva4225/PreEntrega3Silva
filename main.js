@@ -1,191 +1,74 @@
-//Crear un sistema de reservas para un resto en el cual tengo disponibles tres salones (ABAJO, ARRIBA, PATIO)
-//Tengo dos turnos, Uno 20hs y otro 22hs
-//SALON ABAJO: Mesas de 4(4), Mesas de 2(6).
-//SALON ARRIBA: Mesas de 2(6), Mesa de 8(1).
-//SALON PATIO: Mesas de 2(4), Mesas de 4(2).
-//solicitar nombre de la reserva, numero de comenzales, dia, hora y telefono.
-
-// Constructor para la Reserva
-function Reserva(nombre, hora, personas, dia, fecha, telefono) {
-  this.nombre = nombre;
-  this.hora = hora;
-  this.personas = personas;
-  this.dia = dia;
-  this.fecha = fecha;
-  this.telefono = telefono;
-}
-
-// Array para almacenar todas las reservas
 let reservas = [];
+let form = document.getElementById("formulario");
 
-// Función para crear una nueva reserva
-function crearReserva(nombre, hora, personas, dia, fecha, telefono) {
-  let nuevaReserva = new Reserva(nombre, hora, personas, dia, fecha, telefono);
-  reservas.push(nuevaReserva);
+let mostrar = document.getElementById("divReservas");
 
-  if (personas === 1 && nombre != "") {
-    switch (dia) {
-      case "domingo":
-        alert("¡El domingo estaremos cerrados!");
-        break;
-      case "lunes":
-        alert("¡El lunes estaremos cerrados!");
-        break;
-      default:
-        alert(`¡Perfecto ${nombre}, Te esperamos el ${dia} a las ${hora}!`);
-        break;
-    }
-  } else if (personas < 10 && nombre != "") {
-    switch (dia) {
-      case "domingo":
-        alert("¡El domingo estaremos cerrados!");
-        break;
-      case "lunes":
-        alert("¡El lunes estaremos cerrados!");
-        break;
-      default:
-        alert(`¡Perfecto ${nombre}, Los esperamos el ${dia} a las ${hora}!`);
-        break;
-    }
-  } else if (personas >= 10) {
-    alert("Para reservas mayores a 10 comenzales, consultar disponibilidad.");
-  } else {
-    alert("Corroborar que los campos solicitados esten llenos y bien escritos");
+window.onload = function () {
+  let valorGuardado = localStorage.getItem("reservaGuardada");
+  if (valorGuardado) {
+    reservas = JSON.parse(valorGuardado);
+
+    mostrarReserva();
   }
-}
-
-// Función para mostrar todas las reservas
-
-function mostrarReservas() {
-  for (let i = 0; i < reservas.length; i++) {
-    console.log(
-      "Reserva a nombre de " +
-        reservas[i].nombre +
-        " para las " +
-        reservas[i].hora +
-        " el dia " +
-        reservas[i].dia +
-        " " +
-        reservas[i].fecha +
-        " para " +
-        reservas[i].personas +
-        " personas." +
-        " Telefono: " +
-        reservas[i].telefono
-    );
-  }
-}
-
-// Crear reservas
-
-let reservar = prompt("¿desea realizar una reserva? (si,no...) ");
-switch (reservar) {
-  case "si":
-    crearReserva(
-      prompt("ingresar nombre y apellido"),
-      prompt("¿Turno 20hs o 22hs? (ingresar tal cual aparece en este mensaje)"),
-      parseInt(prompt("¿Cuantos comenzales serán? ingresar numeros")),
-      prompt("Ingresar dia (lunes, martes...)"),
-      prompt("Ingresar fecha (ejemplo 02/10)"),
-      prompt("Ingresar numero de telefono")
-    );
-    break;
-  case "no":
-    alert("Que tenga buen dia!");
-    break;
-}
-
-// Mostrar todas las reservas
-mostrarReservas();
-
-//-----------------------SEGUNDA PRUEBA-----------------------
-
-/* let form = document.getElementById("formulario");
+};
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let nombre = document.getElementById("nombre").value;
-  let personas = document.getElementById("personas").value;
-  let fecha = document.getElementById("fecha").value;
-  let turno = document.getElementById("turno").value;
-  let dia = document.getElementById("dia").value;
-  let telefono = document.getElementById("telefono").value;
+  let nombre = document.getElementById("nombre");
+  let personas = document.getElementById("personas");
+  let fecha = document.getElementById("fecha");
+  let turno = document.getElementById("turno");
+  let dia = document.getElementById("dia");
+  let telefono = document.getElementById("telefono");
 
-  function borrarDatos() {
-    document.getElementById("nombre").value = "";
-    document.getElementById("personas").value = "";
-    document.getElementById("fecha").value = "";
-    document.getElementById("dia").value = "";
-    document.getElementById("telefono").value = "";
-    document.getElementById("turno").value = "";
-    document.getElementById("nombre").focus();
+  let reservaNombre = nombre.value;
+  let reservaPersonas = personas.value;
+  let reservaFecha = fecha.value;
+  let reservaTurno = turno.value;
+  let reservaDia = dia.value;
+  let reservaTelefono = telefono.value;
+
+  nuevaReserva = {
+    nombre: reservaNombre,
+    personas: reservaPersonas,
+    fecha: reservaFecha,
+    turno: reservaTurno,
+    dia: reservaDia,
+    telefono: reservaTelefono,
+  };
+
+  localStorage.setItem("reservaGuardada", JSON.stringify(reservas));
+
+  function borrar() {
+    nombre.value = "";
+    personas.value = "";
+    fecha.value = "";
+    turno.value = "";
+    dia.value = "";
+    telefono.value = "";
   }
 
-  function mostrarReservas() {
-    for (let i = 0; i < reservas.length; i++) {
-      console.log(
-        "Reserva a nombre de " +
-          nombre +
-          " para las " +
-          turno +
-          " el dia " +
-          dia +
-          " " +
-          fecha +
-          " para " +
-          personas +
-          " personas. " +
-          " Telefono: " +
-          telefono +
-          "."
-      );
-      borrarDatos();
-    }
-  }
-
-  function Reserva(nombre, turno, personas, dia, fecha, telefono) {
-    this.nombre = nombre;
-    this.hora = turno;
-    this.personas = personas;
-    this.dia = dia;
-    this.fecha = fecha;
-    this.telefono = telefono;
-  }
-
-  let reservas = [];
-
-  function crearReserva(nombre, turno, personas, dia, fecha, telefono) {
-    let nuevaReserva = new Reserva(
-      nombre,
-      turno,
-      personas,
-      dia,
-      fecha,
-      telefono
-    );
-    reservas.push(nuevaReserva);
-  }
-  if (nombre === "") {
+  if (reservaNombre === "") {
     alert("el nombre es obligatorio");
     document.getElementById("nombre").focus();
-  } else if (personas === "") {
+  } else if (reservaPersonas === "") {
     alert("el numero de comenzales es obligatorio");
     document.getElementById("personas").focus();
-  } else if (fecha === "") {
-    alert("la fecha es obligatorio");
+  } else if (reservaFecha === "") {
+    alert("la fecha es obligatoria");
     document.getElementById("fecha").focus();
-  } else if (dia === "") {
+  } else if (reservaDia === "") {
     alert("el dia es obligatorio");
     document.getElementById("dia").focus();
-  } else if (telefono === "") {
+  } else if (reservaTelefono === "") {
     alert("el telefono es obligatorio");
     document.getElementById("telefono").focus();
-  } else if (turno === "") {
+  } else if (reservaTurno === "") {
     alert("el turno es obligatorio");
     document.getElementById("turno").focus();
-  } else if (personas === 1) {
-    switch (dia) {
+  } else if (reservaPersonas == 1) {
+    switch (reservaDia) {
       case "domingo":
         alert("¡El domingo estaremos cerrados, elige otro dia!");
         break;
@@ -193,13 +76,16 @@ form.addEventListener("submit", function (event) {
         alert("¡El lunes estaremos cerrados, elige otro dia!");
         break;
       default:
-        crearReserva();
-        mostrarReservas();
-        alert(`¡Perfecto ${nombre}, Te esperamos el ${dia} a las ${turno}!`);
+        reservas.push(nuevaReserva);
+        mostrarReserva();
+        alert(
+          `¡Perfecto ${reservaNombre}, Te esperamos el ${reservaDia} a las ${reservaTurno}!`
+        );
+        borrar();
         break;
     }
-  } else if (personas < 10) {
-    switch (dia) {
+  } else if (reservaPersonas < 10 && reservaPersonas > 1) {
+    switch (reservaDia) {
       case "domingo":
         alert("¡El domingo estaremos cerrados, elige otro dia!");
         break;
@@ -207,15 +93,29 @@ form.addEventListener("submit", function (event) {
         alert("¡El lunes estaremos cerrados, elige otro dia!");
         break;
       default:
-        crearReserva();
-        mostrarReservas();
-        alert(`¡Perfecto ${nombre}, Los esperamos el ${dia} a las ${turno}!`);
+        reservas.push(nuevaReserva);
+        mostrarReserva();
+        alert(
+          `¡Perfecto ${reservaNombre}, Los esperamos el ${reservaDia} a las ${reservaTurno}!`
+        );
+        borrar();
         break;
     }
-  } else if (personas >= 10) {
+  } else if (reservaPersonas >= 10) {
     alert("Para reservas mayores a 10 comenzales, consultar disponibilidad.");
   } else {
     alert("Corroborar que los campos solicitados esten llenos y bien escritos");
   }
 });
- */
+
+let mostrarReserva = () => {
+  mostrar.innerHTML = "";
+
+  if (reservas.length > 0) {
+    mostrar.innerHTML += `<div class="d-flex flex-wrap">`;
+    reservas.forEach(function (nuevaReserva) {
+      mostrar.innerHTML += `<div class="border rounded-3 m-3 p-3 bg-black opacity-75" ><spam class="text-decoration-underline">Nueva reserva</spam> </br>Nombre: ${nuevaReserva.nombre}</br> Turno: ${nuevaReserva.turno}</br>Dia: ${nuevaReserva.dia} ${nuevaReserva.fecha}</br>Personas: ${nuevaReserva.personas}</br>Telefono: ${nuevaReserva.telefono}</div>`;
+    });
+    mostrar.innerHTML += "</div>";
+  }
+};
