@@ -7,12 +7,14 @@
   margin: 0;
   padding: 0;
   font-family: "Playfair Display", serif;
+  box-sizing: border-box;
 }
 
 .seccion-principal {
-  height: 120vh;
-  background-position: center;
   background-image: url(../assets/9.jpg);
+  height: 120vh;
+  width: 100%;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -23,6 +25,202 @@ form input {
 
 h1 {
   color: antiquewhite;
+}
+
+.formulario {
+  width: 75vh;
+  animation-delay: 3s;
+}
+
+body {
+  background: #181818;
+  color: #fff;
+  line-height: 1.6;
+  font-family: "Quicksand", sans-serif;
+}
+
+.container {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.logo {
+  text-align: center;
+  font-size: 3em;
+}
+
+.logo span {
+  color: #dfcbc3;
+}
+
+.contact-wrapper {
+  margin-top: 100px;
+  margin: 100px;
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+}
+
+.contact-wrapper > * {
+  padding: 1em;
+}
+
+.contact-form {
+  background: #222222;
+}
+
+.contact-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.contact-form form label {
+  display: block;
+}
+
+.contact-form form p {
+  margin: 0;
+  padding: 1em;
+}
+
+.contact-form form .block {
+  grid-column: 1/3;
+}
+
+.contact-form form button,
+.contact-form form input,
+.contact-form form textarea {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  background: none;
+  outline: 0;
+  color: #fff;
+  border-bottom: 1px solid #dfcbc3;
+}
+
+.contact-form form button {
+  background: #4c3428;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1em;
+}
+
+.contact-form form button:hover,
+.contact-form form button:focus {
+  background: #dfcbc3;
+  color: #fff;
+  transition: background-color 1s ease-out;
+  outline: 0;
+}
+
+.contact-info {
+  background: #000;
+}
+
+.contact-info h4,
+.contact-info ul,
+.contact-info p {
+  text-align: center;
+  margin: 0 0 1rem 0;
+}
+
+@media (min-width: 700px) {
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .contact-wrapper > * {
+    padding: 2em;
+  }
+  .contact-info h4,
+  .contact-info ul,
+  .contact-info p {
+    text-align: left;
+  }
+}
+/* ----------TARJETAS---------------- */
+.tarjeta .tarj-div {
+  transition: all 0.5s;
+}
+.tarjeta .tarj-div:hover {
+  transform: scale(1.03);
+}
+
+.img-tarj {
+  height: 180px;
+}
+
+.tarjetas {
+  height: 100%;
+}
+.tarjetas .tarj {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  margin: 10px;
+}
+.tarjetas .tarj .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.tarjetas .tarj .front {
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000;
+}
+.tarjetas .tarj .front img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tarjetas .tarj .front h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+.tarjetas .tarj .back {
+  transform: perspective(600px) rotateY(180deg);
+  background: #282828;
+  padding: 15px;
+  color: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-shadow: 0 5px 7px #7e7e7e;
+}
+.tarjetas .tarj .back h3 {
+  font-size: 30px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  text-decoration-line: underline;
+}
+.tarjetas .tarj .back p {
+  letter-spacing: 1px;
+}
+
+.tarj:hover .front {
+  transform: perspective(600px) rotateY(180deg);
+}
+
+.tarj:hover .back {
+  transform: perspective(600px) rotateY(360deg);
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap");
+.bg-body {
+  background-color: #ecadca !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Playfair Display", serif;
+}
+
+.seccion-principal {
+  height: 120vh;
+  background-position: center;
+  background-image: url(../assets/9.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form input {
+  margin: 2px;
+}
+
+h1 {
+  color: antiquewhite;
+}
+
+
+
+/*# sourceMappingURL=styles.css.map */
