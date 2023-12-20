@@ -78,10 +78,9 @@ reservar.addEventListener("click", function () {
             </li>
           </ul>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
-            provident ipsam necessitatibus repellendus?
+            Estamos abiertos de martes a sabados desde las 20hs! 
           </p>
-          <p>Company.com</p>
+          <p>Corteyonfeccion.com</p>
         </div>
       </div>`;
 
@@ -253,14 +252,9 @@ reservar.addEventListener("click", function () {
     "assets/4.jpg",
     "assets/5.jpg",
     "assets/6.jpg",
-    "assets/7.jpg",
     "assets/8.jpg",
-    "assets/9.jpg",
-    "assets/10.jpg",
-    "assets/11.jpg",
     "assets/12.jpg",
     "assets/13.jpg",
-    "assets/14.jpg",
     "assets/15.jpg",
     "assets/16.jpg",
   ];
@@ -269,8 +263,6 @@ reservar.addEventListener("click", function () {
     let indiceAleatorio = Math.floor(Math.random() * imagenes.length);
     return imagenes[indiceAleatorio];
   }
-
-  /* let imagenAleatoria = obtenerImagenAleatoria(); */
 
   let mostrarReserva = () => {
     mostrar.innerHTML = "";
@@ -299,3 +291,20 @@ reservar.addEventListener("click", function () {
     }
   };
 });
+
+fetch("productos.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const platos = data.platos;
+    const platosContainer = document.getElementById("lista");
+
+    platos.forEach((platos) => {
+      platosContainer.innerHTML += `
+      <div class="border rounded-2 bg-body d-flex w-25 flex-column align-items-center justify-content-center m-2 p-2">
+        <h3>${platos.nombre}</h3>
+        <p>Precio: ${platos.precio}</br>ingredientes: ${platos.ingredientes}</p>
+        <img src=${platos.foto} alt="corte" class="w-75" />
+      </div>
+        `;
+    });
+  });

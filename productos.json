@@ -1,0 +1,28 @@
+{
+  "platos": [
+    {
+      "nombre": "Salmon",
+      "precio": "$10000",
+      "ingredientes": "risotto de espinaca",
+      "foto": "assets/7.jpg"
+    },
+    {
+      "nombre": "Pecho de cerdo",
+      "precio": "$8000",
+      "ingredientes": "pure de batata",
+      "foto": "assets/11.jpg"
+    },
+    {
+      "nombre": "Arroz con mariscos",
+      "precio": "$8000",
+      "ingredientes": "frutos de mar",
+      "foto": "assets/14.jpg"
+    },
+    {
+      "nombre": "Piña asada",
+      "precio": "$4000",
+      "ingredientes": "leche de coco",
+      "foto": "assets/10.jpg"
+    }
+  ]
+}

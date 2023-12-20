@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap");
 .bg-body {
-  background-color: #ecadca !important;
+  background-color: #240101 !important;
 }
 
 * {
@@ -57,7 +57,7 @@ ul {
 }
 
 .logo span {
-  color: #dfcbc3;
+  color: #e76e3e;
 }
 
 .contact-wrapper {
@@ -71,7 +71,7 @@ ul {
 }
 
 .contact-form {
-  background: #222222;
+  background: #232323;
 }
 
 .contact-form form {
@@ -101,11 +101,11 @@ ul {
   background: none;
   outline: 0;
   color: #fff;
-  border-bottom: 1px solid #dfcbc3;
+  border-bottom: 1px solid #f96f38;
 }
 
 .contact-form form button {
-  background: #4c3428;
+  background: #d15d24;
   border: 0;
   text-transform: uppercase;
   padding: 1em;
@@ -113,9 +113,9 @@ ul {
 
 .contact-form form button:hover,
 .contact-form form button:focus {
-  background: #dfcbc3;
+  background: #b08576;
   color: #fff;
-  transition: background-color 1s ease-out;
+  transition: background-color 0.5s ease-out;
   outline: 0;
 }
 
@@ -176,7 +176,7 @@ ul {
 }
 .tarjetas .tarj .front {
   transform: perspective(600px) rotateY(0deg);
-  box-shadow: 0 5px 10px #000;
+  box-shadow: 0 5px 10px #636363;
 }
 .tarjetas .tarj .front img {
   position: absolute;
